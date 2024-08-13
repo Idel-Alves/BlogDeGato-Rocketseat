@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    --webkit-font-smoothing: antialiased;
+    --moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    font-size: 62.5%;
+
+    --white: hsl(0, 0%, 100%);
+    --bluish-white: hsl(196, 100%, 98%);
+    --color-title: hsl(240, 6%, 13%);
+    --color-text: hsl(240, 5%, 7%);
+    --color-bg-header: hsl(196, 91%, 25%);
+    --color-bg-footer: hsl(195, 46%, 40%);
+}
+
+html, body , input {
+    font-family: "Mulish", sans-serif;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
+#app {
+    display: grid;
+    grid-template-rows: max-content 1fr max-content max-content;
+}
+
+header {
+    background-color: var(--color-bg-header);
+}
+
+header div {
+    padding: .8rem 1.4rem;
+    width: min(118.4rem, 100%);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img.logo {
+    padding: 1rem;
+    border-radius: 50%;
+    background-color: var(--bluish-white);
+}
+
+header form {
+    width: 90%;
+    border-radius: .6rem;
+}
+
+.input-wrapper label {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+}
+
+.input-wrapper input {
+    width: 100%;
+    border: 0;
+    border-radius: 2rem;
+    font-size: 1.4rem;
+    padding: 1.6rem;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255 , 0.2);
+    color: var(--white);
+}
+
+.input-wrapper input::placeholder {
+    color: var(--white);
+}
+
+img.avatar {
+    width: 5rem;
+    height: 5rem;
+}
+
+.container {
+    padding: auto 3.2rem;
+    width: min(112rem, 100%);
+    margin-left: 0 auto;
+}
+
+main .container .section-banner {
+    width: 100%;
+    text-align: center;
+}
+
+main .container .section-banner img {
+    width: 100%;
+    object-fit: cover;
+}
+
+main .container .section-title,
+main .container .section-text,
+.sidebar-container{
+    padding: 1.6rem 2.4rem;
+}
+
+main .container .section-title {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+main .container .section-title h3, 
+.sidebar-container .title-sidebar h3 {
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: var(--color-title);
+}
+
+main .container .section-title div {
+    display: flex;
+    gap: 1rem;
+}
+
+main .container .section-title div button {
+    all: unset;
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+main .container .section-title div button:hover {
+    transform: scale(1.1);
+}
+
+main .container .section-title div ion-icon:nth-child(1),
+main .container .section-title div ion-icon:nth-child(2) {
+    font-size: 1.8rem;
+    padding: 1.6rem;
+    background-color: var(--color-bg-header);
+    color: var(--white);
+    border-radius: 50%;
+}
+
+main .container .section-text p {
+    font-size: 1.6rem;
+    color: var(--color-text)
+}
+
+.sidebar-container,
+.sidebar-container .gallery-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sidebar-container .gallery-sidebar figure {
+    display: flex;
+    gap: 1.6rem;
+    align-items: center;
+}
+
+.sidebar-container .gallery-sidebar figure .details {
+    display: flex;
+    gap: .5rem;
+    flex-direction: column;
+}
+
+.sidebar-container .gallery-sidebar figure .details h4 {
+    font-size: 1.8rem;
+    color: var(--color-title);
+} 
+
+.sidebar-container .gallery-sidebar figure .details p {
+    font-size: 1.4rem;
+    color: var(--color-text);
+}    
+
+footer {
+    margin-top: 2rem;
+    text-align: center;
+    padding: 1.6rem;
+    color: var(--bluish-white);
+    background-color: var(--color-bg-footer);
+}
+
+@media (width > 1120px) {
+    #app {
+        grid-template-areas:
+        "header header"
+        "main sidebar"
+        "footer footer";
+    }
+
+    .container {
+        width: min(112rem, 100%);
+        margin-left: auto;
+    }
+
+    header div {
+        padding: .8rem 0;
+    }
+
+    header {
+        grid-area: header;
+        animation: fromtop 600ms 400ms backwards;
+    }
+
+    main {
+        grid-area: main;
+    }
+
+    main .container .section-title,
+    main .container .section-text {
+    padding: 1.6rem 0;
+}
+
+    main .container {  
+        max-width: 80rem;
+    }
+
+    aside {
+        grid-area: sidebar;
+    }
+
+    aside.sidebar-container {
+        max-width: 38.4rem;
+    }
+
+    footer {
+        grid-area: footer;
+        animation: frombottom 600ms 400ms backwards;
+    }
+}
+
+@keyframes fromtop {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes frombottom {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+
+@keyframes move {
+    from {
+        transform: translateY(var(--startY));
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: scale(0.7)
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.item {
+    --delay: .2s;
+    animation: appear .4s var(--delay) backwards;
+}
